@@ -1,7 +1,7 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import ReactTestUtils, { SyntheticEventData } from 'react-dom/test-utils'; // ES6
 import { MemoryRouter as Router } from 'react-router-dom';
-import { usePostData, useQuery } from '../hooks';
+import { usePostData, useQuery } from '../../hooks';
 import TicketDetails from './ticket-details';
 
 jest.mock('../hooks');

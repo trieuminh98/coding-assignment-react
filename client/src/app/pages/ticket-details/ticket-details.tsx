@@ -11,9 +11,9 @@ import {
 } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { BackdropLoading } from '../elements';
-import { usePostData, useQuery } from '../hooks';
-import { POST_DATA_METHOD } from '../services/request.service';
+import { BackdropLoading } from '../../elements';
+import { usePostData, useQuery } from '../../hooks';
+import { POST_DATA_METHOD } from '../../services/request.service';
 
 /* eslint-disable-next-line */
 export interface TicketDetailsProps {}

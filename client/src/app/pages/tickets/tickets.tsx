@@ -20,9 +20,9 @@ import {
 } from '@mui/material';
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BackdropLoading, Dialog, Loading } from '../elements';
-import { useDialog, usePostData, useQuery } from '../hooks';
-import { POST_DATA_METHOD } from '../services/request.service';
+import { BackdropLoading, Dialog, Loading } from '../../elements';
+import { useDialog, usePostData, useQuery } from '../../hooks';
+import { POST_DATA_METHOD } from '../../services/request.service';
 
 enum STATUS {
   ALL = 'ALL',
@@ -73,6 +73,7 @@ export function Tickets() {
   const reset = () => {
     setErr(false);
     setDescription('');
+    onCloseDialog();
   };
 
   const onAdd = async () => {
@@ -135,37 +136,44 @@ export function Tickets() {
             bgcolor: 'background.paper',
           }}
         >
-          {ticketsFilterByStatus.map((value, index) => {
-            const labelId = `checkbox-list-label-${value}`;
+          {ticketsFilterByStatus.length > 0 ? (
+            ticketsFilterByStatus.map((value, index) => {
+              const labelId = `checkbox-list-label-${value}`;
 
-            return (
-              <ListItem key={value.id} disablePadding>
-                <ListItemButton
-                  onClick={() => {
-                    onNavigateToDetail(value.id);
-                  }}
-                  dense
-                >
-                  <ListItemText
-                    id={labelId}
-                    primary={
-                      <Box display={'flex'} justifyContent={'space-between'}>
-                        <Typography>
-                          {index + 1}: {value.description}
-                        </Typography>
-                        <Box gap={4} display={'flex'}>
+              return (
+                <ListItem key={value.id} disablePadding>
+                  <ListItemButton
+                    onClick={() => {
+                      onNavigateToDetail(value.id);
+                    }}
+                    dense
+                  >
+                    <ListItemText
+                      id={labelId}
+                      primary={
+                        <Box display={'flex'} justifyContent={'space-between'}>
                           <Typography>
-                            {users.find((i) => i.id === value.assigneeId)?.name}
+                            {index + 1}: {value.description}
                           </Typography>
-                          <EditIcon />
+                          <Box gap={4} display={'flex'}>
+                            <Typography>
+                              {
+                                users.find((i) => i.id === value.assigneeId)
+                                  ?.name
+                              }
+                            </Typography>
+                            <EditIcon />
+                          </Box>
                         </Box>
-                      </Box>
-                    }
-                  />
-                </ListItemButton>
-              </ListItem>
-            );
-          })}
+                      }
+                    />
+                  </ListItemButton>
+                </ListItem>
+              );
+            })
+          ) : (
+            <Box>No tickets</Box>
+          )}
         </List>
       </Card>
       <Dialog title="Add Ticket" open={open} handleClose={onCloseDialog}>

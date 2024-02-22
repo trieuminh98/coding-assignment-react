@@ -1,8 +1,8 @@
 import { Box, Button, TextField } from '@mui/material';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import { MemoryRouter as Router } from 'react-router-dom';
-import { Dialog } from '../elements';
-import { useDialog, usePostData, useQuery } from '../hooks';
+import { Dialog } from '../../elements';
+import { useDialog, usePostData, useQuery } from '../../hooks';
 import Tickets from './tickets';
 
 jest.mock('../hooks');

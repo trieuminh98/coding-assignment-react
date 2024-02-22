@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Layout from './layouts';
-import TicketDetails from './ticket-details/ticket-details';
-import Tickets from './tickets/tickets';
+import TicketDetails from './pages/ticket-details/ticket-details';
+import Tickets from './pages/tickets/tickets';
 
 const App = () => {
   return (
