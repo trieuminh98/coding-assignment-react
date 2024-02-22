@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
 import { Ticket } from '@acme/shared-models';
+import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 
 @Injectable()
